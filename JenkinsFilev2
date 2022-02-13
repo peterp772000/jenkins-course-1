@@ -6,7 +6,7 @@ node {
      commit_id = readFile('.git/commit-id').trim()
    }
    stage('test') {
-     def myTestContainer = docker.image('node') // pull a docker container with node from docker hub. We can change the node version from 4.6 to something else
+     def myTestContainer = docker.image('node:16.9') // pull a docker container with node from docker hub. We can change the node version from 4.6 to something else
      myTestContainer.pull()
      myTestContainer.inside {
        sh 'npm install --only=dev' // install npm inside the docker container
